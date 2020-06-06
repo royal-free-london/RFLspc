@@ -10,6 +10,7 @@ library(tidyverse)
 library(lubridate)
 library(openxlsx)
 library(RFLtheme)
+library(RDCOMClient) # Have to install.packages("RDCOMClient", repos = "http://www.omegahat.net/R")
 
 ####----Variables----####
 # tab - master
@@ -22,49 +23,77 @@ library(RFLtheme)
 vtemplateFile <- 'SPC Reporting Template.xlsx'
 vworkingFile <- 'working.xlsx'
 
-
 ####----Data Access----####
 df_exampleData <- read.csv('example_data.csv') %>%
   mutate(Date.Time = dmy(Date.Time))
 
 ####----Input Options & Data----####
-df_inputData <- df_exampleData
 
-wb <- openxlsx::loadWorkbook(vtemplateFile)
-writeData(wb, 1, df_inputData,  startRow = 26, startCol = 2,
-          colNames= FALSE)
-saveWorkbook(wb, vworkingFile, overwrite = TRUE)
+rfl_load_spc_model_input <- function(data, templateFile, workingFile) {
+  wb <- openxlsx::loadWorkbook(templateFile)
+  writeData(wb, 1, data,  startRow = 26, startCol = 2,
+            colNames= FALSE)
+  saveWorkbook(wb, workingFile, overwrite = TRUE)  
+}
+
+rfl_load_spc_model_input(df_exampleData, vtemplateFile, vworkingFile)
 
 
 ####----Run SPC Excel Model----####
+
+rfl_calculate_wb <- function(outputfile) {
+  library(RDCOMClient)
+  
+  # Create COM Connection to Excel
+  xlApp <- COMCreate("Excel.Application")
+  xlApp[['Visible']] <- FALSE
+  xlApp[['DisplayAlerts']] <- FALSE
+  
+  # Open workbook
+  xlWB <- xlApp[["Workbooks"]]$Open(outputfile)
+  xlWB$Save()
+  xlWB$Close(TRUE) 
+}
 
 rfl_calculate_wb(paste(getwd(), vworkingFile, sep='/'))
 
 ####----Output Data for Chartting----####
 # Get file
-df_output <- read.xlsx(vworkingFile, startRow = 25, 
-                       detectDates = TRUE,
-                       check.names = TRUE)
+rfl_get_spc_model_output <- function(workingFile) {
+  # Read working file
+  df_output <- read.xlsx(workingFile, startRow = 25, 
+                         detectDates = TRUE,
+                         check.names = TRUE)
+  
+  # Filter for non-empty rows and important columns
+  df_output %>%
+    filter(!is.na(Date.Time)) %>%
+    select(`Date.Time`, Value, Trajectory, Goal, Mean, Upper, Lower, Shift=Shift.1, Trend=Trend.1, Outlier) %>%
+    mutate()
+  
+  # Remove working file
+  file.remove(workingFile)
+}
 
-df_output_tidy <- df_output %>%
-  filter(!is.na(Date.Time)) %>%
-  select(`Date.Time`, Value, Trajectory, Goal, Mean, Upper, Lower, Shift=Shift.1, Trend=Trend.1, Outlier) %>%
-  mutate()
-
-file.remove(vworkingFile)
+rfl_get_spc_model_output(vworkingFile)
 
 ####----Chart Data----####
 
-vpointSize <- 2
+rfl_spc_plot <- function(data, pointSize = 2, ...) {
+  data %>%
+    ggplot(aes(x = `Date.Time`)) +
+    geom_ribbon(aes(ymin = Lower, ymax = Upper), fill = rfl_colour('blue', 0.3)) +
+    geom_line(aes(y = Mean),
+              color = 'black',
+              linetype = 'dashed',
+              size = 1) +
+    geom_line(aes(y = Value)) +
+    geom_point(aes(y = Value), size = pointSize) +
+    geom_point(aes(y = Shift), fill = rfl_colour('pink'), size = pointSize) +
+    geom_point(aes(y = Trend), fill = rfl_colour('yellow'), size = pointSize) +
+    geom_point(aes(y = Outlier), fill = rfl_colour('orange'), size = pointSize) +
+    labs(...) +
+    rfl_style()
+}
 
-df_output_tidy %>%
-ggplot(aes(x=`Date.Time`)) +
-  geom_ribbon(aes(ymin = Lower, ymax = Upper), fill=rfl_colour('blue', 0.3)) +
-  geom_line(aes(y=Mean), color='black', linetype ='dashed', size=1) +
-  geom_line(aes(y=Value)) +
-  geom_point(aes(y=Value), size=vpointSize) +
-  geom_point(aes(y=Shift), fill=rfl_colour('pink'), size=vpointSize) +
-  geom_point(aes(y=Trend), fill=rfl_colour('yellow'), size=vpointSize) +
-  geom_point(aes(y=Outlier), fill=rfl_colour('orange'), size=vpointSize) +
-  rfl_style()
-
+rfl_spc_plot(df_output_tidy)
