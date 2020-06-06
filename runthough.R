@@ -96,4 +96,4 @@ rfl_spc_plot <- function(data, pointSize = 2, ...) {
     rfl_style()
 }
 
-rfl_spc_plot(df_output_tidy)
+rfl_spc_plot(df_output_tidy, title = "Example SPC Chart", subtitle = "Here is a subtitle")
