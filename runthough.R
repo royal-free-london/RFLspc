@@ -34,8 +34,8 @@ rfl_load_spc_model_input <- function(data, templateFile, workingFile) {
   wb <- openxlsx::loadWorkbook(templateFile)
   writeData(wb, 1, data,  startRow = 26, startCol = 2,
             colNames= FALSE)
-  saveWorkbook(wb, workingFile, overwrite = TRUE) 
-  
+  saveWorkbook(wb, workingFile, overwrite = TRUE)
+
   return(workingFile)
 }
 
@@ -49,12 +49,12 @@ rfl_calculate_wb <- function(workingFile) {
   xlApp <- COMCreate("Excel.Application")
   xlApp[['Visible']] <- FALSE
   xlApp[['DisplayAlerts']] <- FALSE
-  
+
   # Open workbook
   xlWB <- xlApp[["Workbooks"]]$Open(workingFile)
   xlWB$Save()
-  xlWB$Close(TRUE) 
-  
+  xlWB$Close(TRUE)
+
   return(workingFile)
 }
 
@@ -64,19 +64,19 @@ rfl_calculate_wb <- function(workingFile) {
 # Get file
 rfl_get_spc_model_output <- function(workingFile) {
   # Read working file
-  df_output <- read.xlsx(workingFile, startRow = 25, 
+  df_output <- read.xlsx(workingFile, startRow = 25,
                          detectDates = TRUE,
                          check.names = TRUE)
-  
+
   # Remove working file
   file.remove(workingFile)
-  
+
   # Filter for non-empty rows and important columns
   df_output %>%
     filter(!is.na(Date.Time)) %>%
     select(`Date.Time`, Value, Trajectory, Goal, Mean, Upper, Lower, Shift=Shift.1, Trend=Trend.1, Outlier) %>%
     mutate()
-  
+
 }
 
 # df_output_tidy <- rfl_get_spc_model_output(vworkingFile)
