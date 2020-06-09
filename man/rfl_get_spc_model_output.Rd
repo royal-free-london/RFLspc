@@ -5,7 +5,7 @@
 \title{Get data out of the SPC tempalate
 This function loads the data back into R from the evaluated Excel SPC template}
 \usage{
-rfl_get_spc_model_output(workingFile)
+rfl_get_spc_model_output('SPC Reporting Template Filled In.xlsx')
 }
 \arguments{
 \item{workingFile}{Path to working file with data loaded into it and evaluated by rfl_calculate_wb}

@@ -3,15 +3,16 @@
 #'
 #' @param workingFile Path to working file wiht data loaded into it from rfl_load_spc_model_input
 #' @return location of the workingFile with the SPC calculations complete
-#' @example rfl_calculate_wb(paste(getwd(), 'working.xlsx', sep= '/'))
+#' @usage rfl_calculate_wb('fileToCalculate.xlsx')
 rfl_calculate_wb <- function(workingFile) {
+  require("RDCOMClient") # not allowed usually but only works by doing this
   # Create COM Connection to Excel
-  xlApp <- RDCOMClient::COMCreate("Excel.Application")
+  xlApp <- COMCreate("Excel.Application")
   xlApp[['Visible']] <- FALSE
   xlApp[['DisplayAlerts']] <- FALSE
 
   # Open workbook
-  xlWB <- RDCOMClient::xlApp[["Workbooks"]]$Open(workingFile)
+  xlWB <- xlApp[["Workbooks"]]$Open(workingFile)
   xlWB$Save()
   xlWB$Close(TRUE)
 

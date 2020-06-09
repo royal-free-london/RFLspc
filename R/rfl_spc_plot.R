@@ -6,7 +6,7 @@
 #' @param pointSize Size fo the alerts and geom_points
 #' @param ... Variables sent to labs() for example title = "" and subtitle = "".
 #' @return a ggplot SPC chart
-#' @example rfl_spc_plot(data)
+#' @usage rfl_spc_plot(data)
  rfl_spc_plot <- function(data, pointSize = 2, ...) {
 
     ggplot2::ggplot(data, aes(x = `Date.Time`)) +

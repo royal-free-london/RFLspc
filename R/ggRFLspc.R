@@ -8,11 +8,11 @@
 #' @param pointSize Size fo the alerts and geom_points
 #' @param ... Variables sent to labs() for example title = "" and subtitle = "".
 #' @return a ggplot SPC chart
-#' @example rfl_spc_plot(data)
+#' @usage rfl_spc_plot(data, title='Data about Measure 1', subtitle='Collected at Hospital xxx 2018/19')
 #' @export
-ggRFLspc <- function(data, templateFile=file.path('excel', 'SPC Reporting Template.xlsx'), workingFile=tempfile(), pointSize=2, ...) {
+ggRFLspc <- function(data, workingFile=tempfile(), pointSize=2, ...) {
   df_exampleData %>%
-    rfl_load_spc_model_input(templateFile, workingFile) %>%
+    rfl_load_spc_model_input(workingFile) %>%
     rfl_calculate_wb %>%
     rfl_get_spc_model_output %>%
     rfl_spc_plot(pointSize = pointSize, ...)

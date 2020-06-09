@@ -6,12 +6,12 @@
 #' @param templateFile Path to SPC Reporting Template file
 #' @param workingFile Path to working file
 #' @return location of the workingFile with the data loaded into it
-#' @example rfl_load_spc_model_input(df_exampleData, 'SPC Reporting Template.xlsx', paste(getwd(), 'working.xlsx', sep= '/'))
-rfl_load_spc_model_input <- function(data, templateFile, workingFile) {
-  wb <- openxlsx::loadWorkbook(templateFile)
-  openxlsx::writeData(wb, 1, data,  startRow = 26, startCol = 2,
+#' @usage rfl_load_spc_model_input(df_exampleData, tempfile())
+rfl_load_spc_model_input <- function(data, workingFile) {
+
+  openxlsx::writeData(RFLspc::savedTemplateFile, 1, data,  startRow = 26, startCol = 2,
             colNames= FALSE)
-  openxlsx::saveWorkbook(wb, workingFile, overwrite = TRUE)
+  openxlsx::saveWorkbook(RFLspc::savedTemplateFile, workingFile, overwrite = TRUE)
 
   return(workingFile)
 }

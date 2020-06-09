@@ -1,5 +1,5 @@
 Package: RFLspc
-Title: What the Package Does (One Line, Title Case)
+Title: Create an SPC Chart Like the RFL SPC template
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Edward",
@@ -20,3 +20,5 @@ Imports:
     RFLtheme,
     RDCOMClient,
     magrittr
+Depends: 
+    R (>= 2.10)

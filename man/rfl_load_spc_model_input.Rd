@@ -4,14 +4,14 @@
 \alias{rfl_load_spc_model_input}
 \title{Input data into SPC template}
 \usage{
-rfl_load_spc_model_input(data, templateFile, workingFile)
+rfl_load_spc_model_input(df_exampleData, tempfile())
 }
 \arguments{
 \item{data}{data.frame consisting of only a date/time column in POSIXct format and a numerical column}
 
-\item{templateFile}{Path to SPC Reporting Template file}
-
 \item{workingFile}{Path to working file}
+
+\item{templateFile}{Path to SPC Reporting Template file}
 }
 \value{
 location of the workingFile with the data loaded into it

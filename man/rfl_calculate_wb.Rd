@@ -5,7 +5,7 @@
 \title{Open, evaluate and save the SPC working file
 This function calcuates the values required for the SPC by opening, evaluating and saving the the SPC template in excel}
 \usage{
-rfl_calculate_wb(workingFile)
+rfl_calculate_wb('fileToCalculate.xlsx')
 }
 \arguments{
 \item{workingFile}{Path to working file wiht data loaded into it from rfl_load_spc_model_input}

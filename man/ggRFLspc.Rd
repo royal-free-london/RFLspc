@@ -4,18 +4,18 @@
 \alias{ggRFLspc}
 \title{create an SPC chart}
 \usage{
-ggRFLspc(data, templateFile, workingFile, pointSize = 2, ...)
+rfl_spc_plot(data, title='Data about Measure 1', subtitle='Collected at Hospital xxx 2018/19')
 }
 \arguments{
 \item{data}{data.frame consisting of only a date/time column in POSIXct format and a numerical column}
-
-\item{templateFile}{Path to SPC Reporting Template file}
 
 \item{workingFile}{Path to working file}
 
 \item{pointSize}{Size fo the alerts and geom_points}
 
 \item{...}{Variables sent to labs() for example title = "" and subtitle = "".}
+
+\item{templateFile}{Path to SPC Reporting Template file}
 }
 \value{
 a ggplot SPC chart

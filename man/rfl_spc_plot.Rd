@@ -4,7 +4,7 @@
 \alias{rfl_spc_plot}
 \title{Plot the SPC chart}
 \usage{
-rfl_spc_plot(data, pointSize = 2, ...)
+rfl_spc_plot(data)
 }
 \arguments{
 \item{data}{data from rfl_get_spc_model_output}
