@@ -2,8 +2,7 @@
 % Please edit documentation in R/rfl_load_spc_model_input.R
 \name{rfl_load_spc_model_input}
 \alias{rfl_load_spc_model_input}
-\title{Input data into SPC template
-This function loads data into the SPC template ready for calcualtion}
+\title{Input data into SPC template}
 \usage{
 rfl_load_spc_model_input(data, templateFile, workingFile)
 }
@@ -18,6 +17,5 @@ rfl_load_spc_model_input(data, templateFile, workingFile)
 location of the workingFile with the data loaded into it
 }
 \description{
-Input data into SPC template
 This function loads data into the SPC template ready for calcualtion
 }

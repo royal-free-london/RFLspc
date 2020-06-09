@@ -15,8 +15,6 @@ rfl_get_spc_model_output <- function(workingFile) {
 
   # Filter for non-empty rows and important columns
   df_output %>%
-    filter(!is.na(Date.Time)) %>%
-    select(`Date.Time`, Value, Trajectory, Goal, Mean, Upper, Lower, Shift=Shift.1, Trend=Trend.1, Outlier) %>%
-    mutate()
-
+    dplyr::filter(!is.na(Date.Time)) %>%
+    dplyr::select(`Date.Time`, Value, Trajectory, Goal, Mean, Upper, Lower, Shift=Shift.1, Trend=Trend.1, Outlier)
 }

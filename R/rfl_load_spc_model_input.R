@@ -1,4 +1,5 @@
 #' Input data into SPC template
+#'
 #' This function loads data into the SPC template ready for calcualtion
 #'
 #' @param data data.frame consisting of only a date/time column in POSIXct format and a numerical column
