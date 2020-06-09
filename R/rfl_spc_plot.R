@@ -1,4 +1,13 @@
-rfl_spc_plot <- function(data, pointSize = 2, ...) {
+#' Plot the SPC chart
+#'
+#' Create SPC chart ggplot
+#'
+#' @param data data from rfl_get_spc_model_output
+#' @param pointSize Size fo the alerts and geom_points
+#' @param ... Variables sent to labs() for example title = "" and subtitle = "".
+#' @return a ggplot SPC chart
+#' @example rfl_spc_plot(data)
+ rfl_spc_plot <- function(data, pointSize = 2, ...) {
   data %>%
     ggplot(aes(x = `Date.Time`)) +
     geom_ribbon(aes(ymin = Lower, ymax = Upper), fill = rfl_colour('blue', 0.3)) +

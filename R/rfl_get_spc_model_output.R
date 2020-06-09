@@ -1,6 +1,12 @@
+#' Get data out of the SPC tempalate
+#' This function loads the data back into R from the evaluated Excel SPC template
+#'
+#' @param workingFile Path to working file with data loaded into it and evaluated by rfl_calculate_wb
+#' @return a data.frame including the original data and the calculated variables for the SPC chart
+#' @example rfl_get_spc_model_output(paste(getwd(), 'working.xlsx', sep= '/'))
 rfl_get_spc_model_output <- function(workingFile) {
   # Read working file
-  df_output <- read.xlsx(workingFile, startRow = 25,
+  df_output <- open.xlsx::read.xlsx(workingFile, startRow = 25,
                          detectDates = TRUE,
                          check.names = TRUE)
 

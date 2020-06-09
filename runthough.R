@@ -24,7 +24,7 @@ vtemplateFile <- 'SPC Reporting Template.xlsx'
 vworkingFile <- paste(getwd(), 'working.xlsx', sep= '/')
 
 ####----Data Access----####
-df_exampleData <- read.csv('example_data.csv') %>%
+df_exampleData <- read.csv('inst/extdata/example_data.csv') %>%
   mutate(Date.Time = dmy(Date.Time))
 
 
