@@ -9,6 +9,12 @@ To install:
 remotes::install_github('royal-free-london/RFLspc')
 ```
 
+Ensure dependencies packages are installed. In particular, the RDCOMClient package (which evaluates the excel model) needs to be installed using the code below:
+```r
+install.packages("RDCOMClient", repos = "http://www.omegahat.org/R")
+```
+
+
 To use:
 
 load the package...
