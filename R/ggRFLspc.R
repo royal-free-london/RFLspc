@@ -10,7 +10,7 @@
 #' @return a ggplot SPC chart
 #' @example rfl_spc_plot(data)
 #' @export
-ggRFLspc <- function(data, templateFile, workingFile, pointSize=2, ...) {
+ggRFLspc <- function(data, templateFile=file.path('excel', 'SPC Reporting Template.xlsx'), workingFile=tempfile(), pointSize=2, ...) {
   df_exampleData %>%
     rfl_load_spc_model_input(templateFile, workingFile) %>%
     rfl_calculate_wb %>%
