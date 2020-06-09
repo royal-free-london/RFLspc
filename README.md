@@ -1,3 +1,5 @@
+***Early work, under development***
+
 # RFLspc
 Adaption of Royal Free Standard SPC Excel template for use in R.
 
