@@ -3,6 +3,8 @@
 # RFLspc
 Adaption of Royal Free Standard SPC Excel template for use in R.
 
+This package *actually* copies the data into the excel model; open, updates and saves the excel; and then returns a ggplot object. That’s inefficient and clunky, it's not how you would want to do it. **But** it does mean that the logic used is exactly the same as in our excel template which is a big deal for us.
+
 To install:
 ```r
  # if not installed already, install devtools with install.packages('devtools')
