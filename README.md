@@ -5,7 +5,7 @@ Adaption of Royal Free Standard SPC Excel template for use in R.
 
 To install:
 ```r
- # if not installed already, instal devtools with install.packages('devtools')
+ # if not installed already, install devtools with install.packages('devtools')
 remotes::install_github('royal-free-london/RFLspc')
 ```
 
