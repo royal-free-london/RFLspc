@@ -10,7 +10,7 @@
  rfl_spc_plot <- function(data, pointSize = 2, ...) {
 
     ggplot2::ggplot(data, aes(x = `Date.Time`)) +
-      ggplot2::geom_ribbon(aes(ymin = Lower, ymax = Upper), fill = RFLtheme::rfl_colour('blue', 0.3)) +
+      ggplot2::geom_ribbon(ggplot2::aes(ymin = Lower, ymax = Upper), fill = RFLtheme::rfl_colour('blue', 0.3)) +
       ggplot2::geom_line(aes(y = Mean),
               color = 'black',
               linetype = 'dashed',
