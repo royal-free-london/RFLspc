@@ -17,9 +17,10 @@ install.packages("RDCOMClient", repos = "http://www.omegahat.org/R")
 
 To use:
 
-load the package...
+load the package... (and the tidyverse package which at the moment appears not to being imported correctly on package load)
 ```r
 library('RFLspc')
+library('tidyverse')
 ```
 ...Generate data.frame or tibble with ONLY two variables, the first a date/datetime variable, and the second a numeric variable to plot.
 An example of the data format is saved in the package as an example and can be accessed in the object.
