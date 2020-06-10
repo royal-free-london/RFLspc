@@ -9,17 +9,17 @@
 #' @usage rfl_spc_plot(data)
  rfl_spc_plot <- function(data, pointSize = 2, ...) {
 
-    ggplot2::ggplot(data, aes(x = `Date.Time`)) +
+    ggplot2::ggplot(data, ggplot2::aes(x = `Date.Time`)) +
       ggplot2::geom_ribbon(ggplot2::aes(ymin = Lower, ymax = Upper), fill = RFLtheme::rfl_colour('blue', 0.3)) +
-      ggplot2::geom_line(aes(y = Mean),
+      ggplot2::geom_line(ggplot2::aes(y = Mean),
               color = 'black',
               linetype = 'dashed',
               size = 1) +
-      ggplot2::geom_line(aes(y = Value)) +
-      ggplot2::geom_point(aes(y = Value), size = pointSize) +
-      ggplot2::geom_point(aes(y = Shift), fill = RFLtheme::rfl_colour('pink'), size = pointSize) +
-      ggplot2::geom_point(aes(y = Trend), fill = RFLtheme::rfl_colour('yellow'), size = pointSize) +
-      ggplot2::geom_point(aes(y = Outlier), fill = RFLtheme::rfl_colour('orange'), size = pointSize) +
+      ggplot2::geom_line(ggplot2::aes(y = Value)) +
+      ggplot2::geom_point(ggplot2::aes(y = Value), size = pointSize) +
+      ggplot2::geom_point(ggplot2::aes(y = Shift), fill = RFLtheme::rfl_colour('pink'), size = pointSize) +
+      ggplot2::geom_point(ggplot2::aes(y = Trend), fill = RFLtheme::rfl_colour('yellow'), size = pointSize) +
+      ggplot2::geom_point(ggplot2::aes(y = Outlier), fill = RFLtheme::rfl_colour('orange'), size = pointSize) +
       ggplot2::labs(...) +
     RFLtheme::rfl_style()
 }
