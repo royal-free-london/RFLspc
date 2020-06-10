@@ -13,7 +13,7 @@ Ensure dependencies packages are installed. In particular, the RDCOMClient packa
 ```r
 install.packages("RDCOMClient", repos = "http://www.omegahat.org/R")
 ```
-
+Chart styling is also done with the RFLtheme package, available to download and use here: https://github.com/royal-free-london/RFLtheme
 
 To use:
 
