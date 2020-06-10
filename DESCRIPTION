@@ -6,7 +6,7 @@ Authors@R:
            family = "Watkinson",
            role = c("aut", "cre"),
            email = "ed@edwatto.com")
-Description: What the package does (one paragraph).
+Description: The package uses the Royal Free's excel template to build a ggplot SPC chart
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
 Encoding: UTF-8
@@ -15,6 +15,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports:
     tidyverse,
+    ggplot2,
     lubridate,
     openxlsx,
     RFLtheme,
