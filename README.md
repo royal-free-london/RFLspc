@@ -1,23 +1,25 @@
 ***Early work, under development***
 
 # RFLspc
+====================
 Adaption of Royal Free Standard SPC Excel template for use in R.
 
 This package *actually* copies the data into the excel model; open, updates and saves the excel; and then returns a ggplot object. That’s inefficient and clunky, it's not how you would want to do it. **But** it does mean that the logic used is exactly the same as in our excel template which is a big deal for us.
 
-To install:
+## To install:
+First, ensure all dependencies packages are installed. In particular, the RDCOMClient package (which evaluates the excel model) needs to be installed using the code below:
+```r
+devtools::install_github('omegahat/RDCOMClient')
+```
+Then, install package from this repository
 ```r
  # if not installed already, install devtools with install.packages('devtools')
 remotes::install_github('royal-free-london/RFLspc')
 ```
 
-Ensure dependencies packages are installed. In particular, the RDCOMClient package (which evaluates the excel model) needs to be installed using the code below:
-```r
-install.packages("RDCOMClient", repos = "http://www.omegahat.org/R")
-```
 Chart styling is also done with the RFLtheme package, available to download and use here: https://github.com/royal-free-london/RFLtheme
 
-To use:
+## To use:
 
 load the package... (and the tidyverse package which at the moment appears not to being imported correctly on package load)
 ```r
