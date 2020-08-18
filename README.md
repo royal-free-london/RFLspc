@@ -1,4 +1,7 @@
-***Early work, under development***
+***This package has broadly been replaced by SPCcharter here: https://github.com/johnmackintosh/spccharter and therefort unlikley to be developed/maintained in the future***
+
+
+
 
 # RFLspc
 ====================
